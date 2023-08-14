@@ -6,14 +6,21 @@ const createBook = (book) => {
   bookName.className = "book-name";
   bookName.textContent = book.title;
   bookList.appendChild(bookName);
-  const bookAuthor = document.createElement("ul");
-  bookAuthor.className = "book-author";
-  bookAuthor.textContent = book.authors[1];
-  bookName.appendChild(bookAuthor);
   const bookCover = document.createElement("img");
   bookCover.className = "book-cover";
-  bookCover.src = book.covers[0];
+  bookCover.src = `https://covers.openlibrary.org/b/id/${book.covers[0]}-L.jpg`;
   bookName.appendChild(bookCover);
+  const bookDescription = document.createElement("ul");
+  bookDescription.className = "book-description";
+  bookDescription.textContent = book.description;
+  bookName.appendChild(bookDescription);
+  // author portion to be adjusted later
+  //   const addAuthor = (author) => {
+  //     const bookAuthor = document.createElement("ul");
+  //     bookAuthor.className = "book-author";
+  //     bookAuthor.textContent = book.author_key;
+  //     bookName.appendChild(bookAuthor);
+  //   };
 };
 
 fetch("https://openlibrary.org/works/OL15987908W.json")
@@ -22,3 +29,17 @@ fetch("https://openlibrary.org/works/OL15987908W.json")
     console.log(data);
     createBook(data);
   });
+
+// to be adjusted later
+// fetch("https://openlibrary.org/authors/${author}.json")
+//   .then((r) => r.json())
+//   .then((data) => {
+//     console.log(data);
+//     addAuthor(data);
+//   });
+
+// fetch("http://localhost:3000/books")
+//   .then((r) => r.json())
+//   .then((data) => {
+//     console.log(data);
+//   });

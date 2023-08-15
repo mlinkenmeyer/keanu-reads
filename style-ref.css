@@ -1,0 +1,27 @@
+/*
+This is purely to store our styling references for consistency.
+
+We are using this palette:
+https://www.color-hex.com/color-palette/28228
+
+Color Palette HEX codes:
+
+eggshell blue: #a3dbda
+aqua: #03acd5
+dark teal: #035b71
+soft blue: #d9f0f8
+olive green: #425e2b
+
+Font imports:
+
+To specify fonts in css file, use the following CSS rule:
+font-family: 'Poppins', sans-serif
+
+We have access to:
+Poppins Thin 100
+Poppins Thin 100 Italic
+Poppins Regular 400
+Poppins SemiBold 600
+
+
+*/

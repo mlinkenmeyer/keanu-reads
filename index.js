@@ -81,24 +81,6 @@ const createBook = (book) => {
   bookList.appendChild(newCard);
 };
 
-  // Month Dropdown Menu
-  const months = ["August", "September", "October", "November", "December"];
-  const filterByMonth = document.createElement("select");
-  filterByMonth.id = "filter-by-month";
-  bookList.appendChild(filterByMonth);
-
-  const monthOptions = document.createElement("option");
-  monthOptions.textContent = "Select month";
-  filterByMonth.appendChild(monthOptions);
-
-  for (let i = 0; i < months.length; i++) {
-    const monthOption = document.createElement("option");
-    monthOption.value = months[i];
-    monthOption.textContent = months[i];
-    filterByMonth.appendChild(monthOption);
-  }
-};
-
 //begin fetches for db.json
 
 const fetchBooksFromDB = () => {

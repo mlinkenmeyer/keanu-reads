@@ -119,6 +119,7 @@ const extractDetailsFromResponse = (response) => {
   return null;
 };
 
+//begin fetches for db.json
 const fetchBooksFromDB = () => {
   fetch("http://localhost:3000/books")
     .then((response) => response.json())

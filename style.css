@@ -1,3 +1,20 @@
+/* when I googled manly color palettes: 
+https://www.color-hex.com/color-palette/29852
+*/
+
+.like-button {
+  background-color: #8eaebd;
+  color: #f6f6f6;
+  padding: 10px 40px;
+  border: none;
+  cursor: default;
+}
+
+.filter-by-month {
+  position: relative;
+  display: inline-block;
+}
+
 #comment-form {
   margin: 1rem 0;
   width: 300px;

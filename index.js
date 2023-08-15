@@ -35,10 +35,31 @@ const createBook = (book) => {
   bookCover.className = "book-cover";
   bookCover.src = `http://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`;
   bookName.appendChild(bookCover);
-  const bookDescription = document.createElement("ul");
-  bookDescription.className = "book-description";
-  bookDescription.textContent = book.description;
-  bookName.appendChild(bookDescription);
+
+  fetchBookDescription(book.isbn[0])
+    .then((description) => {
+      const bookDescription = document.createElement("p");
+      bookDescription.className = "book-description";
+      bookDescription.textContent = description;
+      bookName.appendChild(bookDescription);
+    })
+    .catch((error) => {
+      console.error("Error fetching book description:", error);
+    });
+
+  if (book.author_key && book.author_key.length) {
+    // this takes in the first author of the books
+    fetchAuthor(book.author_key[0]).then((authorData) => {
+      if (authorData) {
+        const bookAuthor = document.createElement("ul");
+        bookAuthor.className = "book-author";
+        bookAuthor.textContent = authorData.name;
+        bookName.appendChild(bookAuthor);
+      }
+    });
+  }
+
+  //Like Button Creation & toggler
   const likeButton = document.createElement("button");
   likeButton.className = "like-button";
   likeButton.textContent = "Like book";
@@ -51,27 +72,23 @@ const createBook = (book) => {
       likeButton.textContent = "Like book";
     }
   });
+
+  // Month Dropdown Menu
   const months = ["August", "September", "October", "November", "December"];
   const filterByMonth = document.createElement("select");
   filterByMonth.id = "filter-by-month";
   bookList.appendChild(filterByMonth);
+
   const monthOptions = document.createElement("option");
   monthOptions.textContent = "Select month";
   filterByMonth.appendChild(monthOptions);
+
   for (let i = 0; i < months.length; i++) {
     const monthOption = document.createElement("option");
     monthOption.value = months[i];
     monthOption.textContent = months[i];
     filterByMonth.appendChild(monthOption);
   }
-
-  // author portion to be adjusted later
-  //   const addAuthor = (author) => {
-  //     const bookAuthor = document.createElement("ul");
-  //     bookAuthor.className = "book-author";
-  //     bookAuthor.textContent = book.author_key;
-  //     bookName.appendChild(bookAuthor);
-  //   };
 };
 
 const fetchBookDescription = (isbn) => {

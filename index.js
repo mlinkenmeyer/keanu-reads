@@ -75,27 +75,31 @@ const createBook = (book) => {
 };
 
 const fetchBookDescription = (isbn) => {
-  return fetch(`https://openlibrary.org/api/books?bibkeys=ISBN:${isbn}&jscmd=details&format=json`)
+  return fetch(
+    `https://openlibrary.org/api/books?bibkeys=ISBN:${isbn}&jscmd=details&format=json`
+  )
     .then((response) => response.json())
     .then((data) => {
       const details = extractDetailsFromResponse(data);
       if (details && details.description) {
         return details.description.value;
       } else {
-        return 'No Description';
+        return "This book doesn't have a description.";
       }
     });
 };
 
 const extractDetailsFromResponse = (response) => {
-    for (let topLevelKey in response) {
-        if (response.hasOwnProperty(topLevelKey) && response[topLevelKey].hasOwnProperty('details')) {
-            return response[topLevelKey].details;
-        }
+  for (let topLevelKey in response) {
+    if (
+      response.hasOwnProperty(topLevelKey) &&
+      response[topLevelKey].hasOwnProperty("details")
+    ) {
+      return response[topLevelKey].details;
     }
-    return null;
+  }
+  return null;
 };
-
 
 const fetchBooksFromDB = () => {
   fetch("http://localhost:3000/books")

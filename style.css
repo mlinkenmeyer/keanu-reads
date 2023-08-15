@@ -30,3 +30,17 @@ commentDetails {
   flex-direction: column;
   align-items: flex-start;
 }
+
+.current-book {
+  background-color: #425e2b;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.current-book img {
+  height: 300px;
+  width: auto;
+  align-items: right;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}

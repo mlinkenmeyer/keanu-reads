@@ -1,17 +1,19 @@
 const bookList = document.querySelector(".books-of-the-month");
 
 const searchBookByTitle = (title) => {
-  fetch(`https://openlibrary.org/search.json?title=${title}`)
+  return fetch(`https://openlibrary.org/search.json?title=${title}`)
     .then((response) => response.json())
     .then((data) => {
       if (data.docs && data.docs.length) {
-        createBook(data.docs[0]);
+        return data.docs[0];
       } else {
         console.log("No books found for title:", title);
+        return null;
       }
     })
     .catch((error) => {
       console.error("Failed to fetch books:", error);
+      return null;
     });
 };
 
@@ -36,10 +38,10 @@ const createBook = (book) => {
   cardImage.src = `http://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`;
   cardImage.alt = book.title;
 
-  // const bookDescription = document.createElement("p");
-  // bookDescription.className = "book-description";
-  // bookDescription.textContent = book.description;
-  // bookName.appendChild(bookDescription)
+  const bookDescription = document.createElement("p");
+  bookDescription.className = "book-description";
+  bookDescription.textContent = book.description;
+  newCard.appendChild(bookDescription); // appending to newCard instead of bookName
 
   const cardText = newCard.querySelector('.author-text');
 
@@ -53,7 +55,6 @@ const createBook = (book) => {
     cardText.textContent = "Author info not available.";
   }
 
-  // Like Button
   const likeButton = newCard.querySelector("#like-button");
   likeButton.textContent = "Like book";
   likeButton.addEventListener("click", () => {
@@ -66,6 +67,33 @@ const createBook = (book) => {
 
   bookList.appendChild(newCard);
 };
+
+const fetchBooksFromDB = () => {
+  fetch("http://localhost:3000/books")
+    .then((response) => response.json())
+    .then(async (booksFromDB) => {
+      if (booksFromDB && booksFromDB.length) {
+        for (let book of booksFromDB) {
+          if (!book.image) {
+            let bookFromAPI = await searchBookByTitle(book.title);
+            if (bookFromAPI) {
+              // Merge the book from the API with the book from DB
+              book = { ...bookFromAPI, ...book };
+            }
+          }
+          createBook(book);
+        }
+      } else {
+        console.log("No books found in db.json");
+      }
+    })
+    .catch((error) => {
+      console.error("Failed to fetch books from db.json:", error);
+    });
+};
+
+fetchBooksFromDB();
+
 
 const createMonthDropdown = () => {
   const months = ["August", "September", "October", "November", "December"];
@@ -84,31 +112,6 @@ const createMonthDropdown = () => {
     filterByMonth.appendChild(monthOption);
   }
 };
-
-// Fetch books from db.json
-const fetchBooksFromDB = () => {
-  fetch("http://localhost:3000/books")
-    .then((response) => response.json())
-    .then((data) => {
-      if (data && data.length) {
-        data.forEach((book) => {
-          if (!book.image) {
-            searchBookByTitle(book.title);
-          } else {
-            createBook(book);
-          }
-        });
-      } else {
-        console.log("No books found in db.json");
-      }
-    })
-    .catch((error) => {
-      console.error("Failed to fetch books from db.json:", error);
-    });
-};
-
-// Fetch and display the books when the page loads
-fetchBooksFromDB();
 
 // Comment form
 const commentDiv = document.querySelector("#comment-section");

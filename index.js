@@ -5,7 +5,6 @@ const searchBookByTitle = (title) => {
   fetch(`https://openlibrary.org/search.json?title=${title}`)
     .then((response) => response.json())
     .then((data) => {
-      //console.log(data.docs[0])
       if (data.docs && data.docs.length) {
         createBook(data.docs[0]); // Only use the first result
       } else {
@@ -91,6 +90,8 @@ const createBook = (book) => {
   }
 };
 
+// this function grabs the data for our description
+
 const fetchBookDescription = (isbn) => {
   return fetch(
     `https://openlibrary.org/api/books?bibkeys=ISBN:${isbn}&jscmd=details&format=json`
@@ -105,7 +106,7 @@ const fetchBookDescription = (isbn) => {
       }
     });
 };
-
+// description data fetch continued
 const extractDetailsFromResponse = (response) => {
   for (let topLevelKey in response) {
     if (
@@ -139,5 +140,4 @@ const fetchBooksFromDB = () => {
     });
 };
 
-// Initialization or Main
 fetchBooksFromDB();

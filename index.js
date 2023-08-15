@@ -79,11 +79,7 @@ const createBook = (book) => {
   bookList.appendChild(newCard);
 
   newCard.addEventListener("click", (e) => {
-    console.log(e);
-    highlightedBookTitle.textContent = book.title;
-    highlightedBookAuthor.textContent = book.author;
-    highlightedBookDescription.textContent = book.description;
-    highlightedBookImage.src = `http://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`;
+    displayHighLightedBook(book);
   });
 };
 
@@ -121,17 +117,21 @@ fetchBooksFromDB();
 
 const highlightedBookSection = document.querySelector("#highlighted-book");
 const highlightedBookTitle = document.createElement("h3");
-highlightedBookTitle.textContent = "Title";
 highlightedBookSection.append(highlightedBookTitle);
 const highlightedBookAuthor = document.createElement("p");
-highlightedBookAuthor.textContent = "Author";
 highlightedBookSection.append(highlightedBookAuthor);
 const highlightedBookDescription = document.createElement("p");
-highlightedBookDescription.textContent = "Description";
 highlightedBookSection.append(highlightedBookDescription);
 const highlightedBookImage = document.createElement("img");
-highlightedBookImage.src = `http://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`;
-highlightedBookAuthor.append(highlightedBookImage);
+highlightedBookSection.append(highlightedBookImage);
+
+//function to display the highlighted book; called in the createBook function
+const displayHighLightedBook = (book) => {
+  highlightedBookTitle.textContent = book.title;
+  highlightedBookAuthor.textContent = book.author;
+  highlightedBookDescription.textContent = book.description;
+  highlightedBookImage.src = `http://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`;
+};
 
 //creates book review form
 const commentDiv = document.querySelector("#comment-section");

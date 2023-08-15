@@ -1,29 +1,33 @@
-const bookList = document.querySelector("div#books-of-the-month");
-bookList.className = "books-of-the-month";
 
+const bookList = document.querySelector(".books-of-the-month");
 const currentBookBanner = document.querySelector(".current-book");
 const currentMonthTitle = document.createElement("h1");
+
 currentMonthTitle.textContent = "August Pick";
 currentBookBanner.appendChild(currentMonthTitle);
+
 const currentMonthBook = document.createElement("p");
 currentMonthBook.textContent = "Current Book Title";
 currentBookBanner.appendChild(currentMonthBook);
+
 const keanuPhoto = document.createElement("img");
 keanuPhoto.src = `https://www.cheatsheet.com/wp-content/uploads/2023/03/Sad-Keanu-Reeves-meme.jpg`;
 currentBookBanner.appendChild(keanuPhoto);
 
 const searchBookByTitle = (title) => {
-  fetch(`https://openlibrary.org/search.json?title=${title}`)
+  return fetch(`https://openlibrary.org/search.json?title=${title}`)
     .then((response) => response.json())
     .then((data) => {
       if (data.docs && data.docs.length) {
-        createBook(data.docs[0]); // Only use the first result
+        return data.docs[0];
       } else {
         console.log("No books found for title:", title);
+        return null;
       }
     })
     .catch((error) => {
       console.error("Failed to fetch books:", error);
+      return null;
     });
 };
 
@@ -36,41 +40,46 @@ const fetchAuthor = (authorId) => {
 };
 
 const createBook = (book) => {
-  const bookName = document.createElement("ul");
-  bookName.className = "book-name";
-  bookName.textContent = book.title;
-  bookList.appendChild(bookName);
 
-  const bookCover = document.createElement("img");
-  bookCover.className = "book-cover";
-  bookCover.src = `http://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`;
-  bookName.appendChild(bookCover);
+  const templateCard = document.querySelector(".book-card.template");
+  const newCard = templateCard.cloneNode(true);
+
+  newCard.classList.remove("template");
+
+  const cardTitle = newCard.querySelector(".card-title");
+  cardTitle.textContent = book.title;
+
+  const cardImage = newCard.querySelector(".card-img-top");
+  cardImage.src = `http://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`;
+  cardImage.alt = book.title;
+
+  const cardText = newCard.querySelector(".author-text");
 
   if (book.author_key && book.author_key.length) {
-    // this takes in the first author of the books
     fetchAuthor(book.author_key[0]).then((authorData) => {
       if (authorData) {
-        const bookAuthor = document.createElement("ul");
-        bookAuthor.className = "book-author";
-        bookAuthor.textContent = authorData.name;
-        bookName.appendChild(bookAuthor);
+        cardText.textContent = authorData.name;
       }
     });
+  } else {
+    cardText.textContent = "Author info not available.";
   }
+  // Add book description below the author's name
+  const descriptionText = newCard.querySelector(".description-text");
+  descriptionText.textContent =
+    book.description || "Description not available.";
 
-  //Like Button Creation & toggler
-  const likeButton = document.createElement("button");
-  likeButton.className = "like-button";
+  const likeButton = newCard.querySelector("#like-button");
   likeButton.textContent = "Like book";
-  bookList.appendChild(likeButton);
-  likeButton.addEventListener("click", (e) => {
-    console.log(e);
+  likeButton.addEventListener("click", () => {
     if (likeButton.textContent === "Like book") {
       likeButton.textContent = "Unlike book";
     } else {
       likeButton.textContent = "Like book";
     }
   });
+  bookList.appendChild(newCard);
+};
 
   // Month Dropdown Menu
   const months = ["August", "September", "October", "November", "December"];
@@ -91,17 +100,21 @@ const createBook = (book) => {
 };
 
 //begin fetches for db.json
+
 const fetchBooksFromDB = () => {
   fetch("http://localhost:3000/books")
     .then((response) => response.json())
-    .then((data) => {
-      if (data && data.length) {
-        for (let book of data) {
+    .then(async (booksFromDB) => {
+      if (booksFromDB && booksFromDB.length) {
+        for (let book of booksFromDB) {
           if (!book.image) {
-            searchBookByTitle(book.title);
-          } else {
-            createBook(book);
+            let bookFromAPI = await searchBookByTitle(book.title);
+            if (bookFromAPI) {
+              // Merge the book from the API with the book from DB
+              book = { ...bookFromAPI, ...book };
+            }
           }
+          createBook(book);
         }
       } else {
         console.log("No books found in db.json");
@@ -114,27 +127,54 @@ const fetchBooksFromDB = () => {
 
 fetchBooksFromDB();
 
+
+// Comment form
+
 //creates book review form
 const commentDiv = document.querySelector("#comment-section");
-
 const commentForm = document.querySelector("#comment-form");
+
 commentForm.addEventListener("submit", (e) => {
   e.preventDefault();
+
   const formContent = {
     username: document.querySelector("#username").value,
     title: document.querySelector("#commentTitle").value,
     comment: document.querySelector("#newComment").value,
   };
-  console.log(formContent);
 
   const commentDetails = document.createElement("div");
   commentDetails.innerHTML = `
-  <p> Username: ${formContent.username} </p>
-  <p> Title: ${formContent.title} </p>
-  <p> Comment: ${formContent.comment} </p>
+    <p> Username: ${formContent.username} </p>
+    <p> Title: ${formContent.title} </p>
+    <p> Comment: ${formContent.comment} </p>
   `;
 
   commentDiv.appendChild(commentDetails);
-
   commentForm.reset();
 });
+
+//dropdown for months
+const createMonthDropdown = () => {
+  const months = ["August", "September", "October", "November", "December"];
+  const filterByMonth = document.createElement("select");
+  filterByMonth.id = "filter-by-month";
+
+  const monthOptions = document.createElement("option");
+  monthOptions.textContent = "Select month";
+  filterByMonth.appendChild(monthOptions);
+
+  for (let month of months) {
+    const monthOption = document.createElement("option");
+    monthOption.value = month;
+    monthOption.textContent = month;
+    filterByMonth.appendChild(monthOption);
+  }
+
+  // Append the created dropdown to the month-dropdown div on the DOM
+  const monthDropdownDiv = document.getElementById("month-dropdown");
+  monthDropdownDiv.appendChild(filterByMonth);
+}
+
+// Create the month dropdown
+createMonthDropdown();

@@ -35,12 +35,6 @@ const createBook = (book) => {
   bookCover.src = `http://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`;
   bookName.appendChild(bookCover);
 
-  //added description
-  // const bookDescription = document.createElement("p");
-  // bookDescription.className = "book-description";
-  // bookDescription.textContent = book.description;
-  // bookName.appendChild(bookDescription);
-
   if (book.author_key && book.author_key.length) {
     // this takes in the first author of the books
     fetchAuthor(book.author_key[0]).then((authorData) => {

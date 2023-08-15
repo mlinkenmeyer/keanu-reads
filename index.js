@@ -22,33 +22,6 @@ const fetchAuthor = (authorId) => {
       console.error("Failed to fetch author:", error);
     });
 };
-// FIX LATER, this will eventually be the description.
-// const fetchBookDescription = (isbn) => {
-//   return fetch(
-//     `https://openlibrary.org/api/books?bibkeys=ISBN:${isbn}&jscmd=details&format=json`
-//   )
-//     .then((response) => response.json())
-//     .then((data) => {
-//       const details = extractDetailsFromResponse(data);
-//       if (details && details.description) {
-//         return details.description.value;
-//       } else {
-//         return "This book doesn't have a description.";
-//       }
-//     });
-// };
-
-// const extractDetailsFromResponse = (response) => {
-//   for (let topLevelKey in response) {
-//     if (
-//       response.hasOwnProperty(topLevelKey) &&
-//       response[topLevelKey].hasOwnProperty("details")
-//     ) {
-//       return response[topLevelKey].details;
-//     }
-//   }
-//   return null;
-// };
 
 const createBook = (book) => {
   const templateCard = document.querySelector('.book-card.template');
@@ -63,6 +36,11 @@ const createBook = (book) => {
   cardImage.src = `http://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`;
   cardImage.alt = book.title;
 
+  // const bookDescription = document.createElement("p");
+  // bookDescription.className = "book-description";
+  // bookDescription.textContent = book.description;
+  // bookName.appendChild(bookDescription)
+
   const cardText = newCard.querySelector('.author-text');
 
   if (book.author_key && book.author_key.length) {
@@ -74,21 +52,6 @@ const createBook = (book) => {
   } else {
     cardText.textContent = "Author info not available.";
   }
-
-
-  // This will eventually be the book description in our JSON
-  // if (book.isbn && book.isbn.length) {
-  //   fetchBookDescription(book.isbn[0])
-  //     .then((description) => {
-  //       const bookDescription = document.createElement("p");
-  //       bookDescription.className = "book-description";
-  //       bookDescription.textContent = description;
-  //       newCard.appendChild(bookDescription);
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error fetching book description:", error);
-  //     });
-  // }
 
   // Like Button
   const likeButton = newCard.querySelector("#like-button");

@@ -72,6 +72,36 @@
   object-fit: inherit;
 }
 
+/*begin book carousel*/
+
+#bookCarousel {
+  width: 100%;
+  overflow: hidden;
+}
+
+#bookCarousel .book-card{
+  flex: none;
+  width: calc((100% - 60px) / 3);
+}
+
+#bookCarousel .carousel-inner {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: hidden;
+}
+
+#bookCarousel .carousel-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.6s ease;
+}
+
+.carousel-item-next, .carousel-item-prev, .carousel-item.active {
+  display: flex;
+}
+
+
 /* begin current book styling */
 
 .current-book {

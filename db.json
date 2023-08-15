@@ -4,13 +4,36 @@
       "title": "Inside Out & Back Again",
       "author": "Thanhha Lai",
       "image": "",
-      "description": "A random poetry book"
+      "description": "A moving story of one girl's year of change, dreams, grief, and healing as she journeys from one country to another, one life to the next.",
+      "review": ""
     },
     {
       "title": "Harry Potter and the Deathly Hallows",
       "author": "J.K. Rowling",
       "image": "",
-      "description": "A book about sad things"
+      "description": "After years of battling against the evil Lord Voldemort, 17-year-old Harry Potter is finally an adult wizard, and he and his best friends Ron Weasley and Hermione Granger must set out on a dangerous mission to stop Voldemort once and for all.",
+      "review": ""
+    },
+    {
+      "title": "Taking the red pill",
+      "author": "Glenn Yeffeth",
+      "image": "",
+      "description": "Taking the Red Pill is a thought-provoking, mind-expanding thrill ride through The Matrix, examining the technological challenges, religious symbolism, and philosophical dilemmas the film presents. Taking the Red Pill will change how you view The Matrix—and the world around you.",
+      "review": ""
+    },
+    {
+      "title": "Ode to Happiness",
+      "author": "Keanu Reeves",
+      "image": "",
+      "description": "Ode to Happiness is a about making the best of a bad situation. Neither entirely earnest nor wholly ironic, Ode to Happiness is both a meditation and a gentle tease about how we cope with life's sorrows.",
+      "review": ""
+    },
+    {
+      "title": "BRZRKR, Vol.1",
+      "author": "Keanu Reeves",
+      "image": "",
+      "description": "A WAR WITH NO END. The man known only as B. is half-mortal and half-God, cursed and compelled to violence...even at the sacrifice of his sanity.",
+      "review": ""
     }
   ]
 }

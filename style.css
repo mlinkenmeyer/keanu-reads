@@ -31,6 +31,26 @@ commentDetails {
   align-items: flex-start;
 }
 
+/* For the Book Cards */
 .template {
     display: none;
+}
+
+.books-of-the-month {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.book-card {
+  flex: 1 0 calc(33.33% - 20px);
+  margin: 10px;
+  width: auto;
+  box-sizing: border-box;
+}
+
+.book-card .img {
+  aspect-ratio: 1 / 2;
 }

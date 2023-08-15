@@ -1,8 +1,16 @@
-// {
-//   "books": [
-//     {
-//       "title": "Inside Out & Back Again",
-//       "author": "Thanhha Lai"
-//     }
-//   ]
-// }
+{
+  "books": [
+    {
+      "title": "Inside Out & Back Again",
+      "author": "Thanhha Lai",
+      "image": "",
+      "description": ""
+    },
+    {
+      "title": "Harry Potter and the Deathly Hallows",
+      "author": "J.K. Rowling",
+      "image": "",
+      "description": ""
+    }
+  ]
+}

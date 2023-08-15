@@ -46,17 +46,6 @@ const createBook = (book) => {
   bookCover.src = `http://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`;
   bookName.appendChild(bookCover);
 
-  fetchBookDescription(book.isbn[0])
-    .then((description) => {
-      const bookDescription = document.createElement("p");
-      bookDescription.className = "book-description";
-      bookDescription.textContent = description;
-      bookName.appendChild(bookDescription);
-    })
-    .catch((error) => {
-      console.error("Error fetching book description:", error);
-    });
-
   if (book.author_key && book.author_key.length) {
     // this takes in the first author of the books
     fetchAuthor(book.author_key[0]).then((authorData) => {
@@ -101,35 +90,6 @@ const createBook = (book) => {
   }
 };
 
-// this function grabs the data for our description
-
-const fetchBookDescription = (isbn) => {
-  return fetch(
-    `https://openlibrary.org/api/books?bibkeys=ISBN:${isbn}&jscmd=details&format=json`
-  )
-    .then((response) => response.json())
-    .then((data) => {
-      const details = extractDetailsFromResponse(data);
-      if (details && details.description) {
-        return details.description.value;
-      } else {
-        return "This book doesn't have a description.";
-      }
-    });
-};
-// description data fetch continued
-const extractDetailsFromResponse = (response) => {
-  for (let topLevelKey in response) {
-    if (
-      response.hasOwnProperty(topLevelKey) &&
-      response[topLevelKey].hasOwnProperty("details")
-    ) {
-      return response[topLevelKey].details;
-    }
-  }
-  return null;
-};
-
 //begin fetches for db.json
 const fetchBooksFromDB = () => {
   fetch("http://localhost:3000/books")
@@ -154,6 +114,7 @@ const fetchBooksFromDB = () => {
 
 fetchBooksFromDB();
 
+//creates book review form
 const commentDiv = document.querySelector("#comment-section");
 
 const commentForm = document.querySelector("#comment-form");

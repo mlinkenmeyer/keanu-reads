@@ -127,3 +127,19 @@ input[type="submit"] {
   border-radius: 4px;
   cursor: pointer;
 }
+
+/* formatting book review section */
+#comment-section {
+  border: 2px solid #425e2b;
+  padding: 20px;
+  border-radius: 8px;
+  font-family: "Poppins", sans-serif;
+  background-color: #d9f0f8;
+}
+
+#comment-section div {
+  border: 1px solid #425e2b;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}

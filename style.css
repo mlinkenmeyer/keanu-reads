@@ -30,3 +30,7 @@ commentDetails {
   flex-direction: column;
   align-items: flex-start;
 }
+
+.template {
+    display: none;
+}

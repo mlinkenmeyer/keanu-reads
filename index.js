@@ -1,4 +1,18 @@
+
 const bookList = document.querySelector(".books-of-the-month");
+const currentBookBanner = document.querySelector(".current-book");
+const currentMonthTitle = document.createElement("h1");
+
+currentMonthTitle.textContent = "August Pick";
+currentBookBanner.appendChild(currentMonthTitle);
+
+const currentMonthBook = document.createElement("p");
+currentMonthBook.textContent = "Current Book Title";
+currentBookBanner.appendChild(currentMonthBook);
+
+const keanuPhoto = document.createElement("img");
+keanuPhoto.src = `https://www.cheatsheet.com/wp-content/uploads/2023/03/Sad-Keanu-Reeves-meme.jpg`;
+currentBookBanner.appendChild(keanuPhoto);
 
 const searchBookByTitle = (title) => {
   return fetch(`https://openlibrary.org/search.json?title=${title}`)
@@ -26,6 +40,7 @@ const fetchAuthor = (authorId) => {
 };
 
 const createBook = (book) => {
+
   const templateCard = document.querySelector(".book-card.template");
   const newCard = templateCard.cloneNode(true);
 
@@ -63,9 +78,28 @@ const createBook = (book) => {
       likeButton.textContent = "Like book";
     }
   });
-
   bookList.appendChild(newCard);
 };
+
+  // Month Dropdown Menu
+  const months = ["August", "September", "October", "November", "December"];
+  const filterByMonth = document.createElement("select");
+  filterByMonth.id = "filter-by-month";
+  bookList.appendChild(filterByMonth);
+
+  const monthOptions = document.createElement("option");
+  monthOptions.textContent = "Select month";
+  filterByMonth.appendChild(monthOptions);
+
+  for (let i = 0; i < months.length; i++) {
+    const monthOption = document.createElement("option");
+    monthOption.value = months[i];
+    monthOption.textContent = months[i];
+    filterByMonth.appendChild(monthOption);
+  }
+};
+
+//begin fetches for db.json
 
 const fetchBooksFromDB = () => {
   fetch("http://localhost:3000/books")
@@ -93,7 +127,10 @@ const fetchBooksFromDB = () => {
 
 fetchBooksFromDB();
 
+
 // Comment form
+
+//creates book review form
 const commentDiv = document.querySelector("#comment-section");
 const commentForm = document.querySelector("#comment-form");
 

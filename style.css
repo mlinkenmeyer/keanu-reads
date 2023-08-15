@@ -14,3 +14,19 @@ https://www.color-hex.com/color-palette/29852
   position: relative;
   display: inline-block;
 }
+
+#comment-form {
+  margin: 1rem 0;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+commentDetails {
+  margin: 1rem 0;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}

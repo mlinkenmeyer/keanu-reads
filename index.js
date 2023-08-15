@@ -142,3 +142,27 @@ const fetchBooksFromDB = () => {
 };
 
 fetchBooksFromDB();
+
+const commentDiv = document.querySelector("#comment-section");
+
+const commentForm = document.querySelector("#comment-form");
+commentForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const formContent = {
+    username: document.querySelector("#username").value,
+    title: document.querySelector("#commentTitle").value,
+    comment: document.querySelector("#newComment").value,
+  };
+  console.log(formContent);
+
+  const commentDetails = document.createElement("div");
+  commentDetails.innerHTML = `
+  <p> Username: ${formContent.username} </p>
+  <p> Title: ${formContent.title} </p>
+  <p> Comment: ${formContent.comment} </p>
+  `;
+
+  commentDiv.appendChild(commentDetails);
+
+  commentForm.reset();
+});

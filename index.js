@@ -14,6 +14,32 @@ const createBook = (book) => {
   bookDescription.className = "book-description";
   bookDescription.textContent = book.description;
   bookName.appendChild(bookDescription);
+  const likeButton = document.createElement("button");
+  likeButton.className = "like-button";
+  likeButton.textContent = "Like book";
+  bookList.appendChild(likeButton);
+  likeButton.addEventListener("click", (e) => {
+    console.log(e);
+    if (likeButton.textContent === "Like book") {
+      likeButton.textContent = "Unlike book";
+    } else {
+      likeButton.textContent = "Like book";
+    }
+  });
+  const months = ["August", "September", "October", "November", "December"];
+  const filterByMonth = document.createElement("select");
+  filterByMonth.id = "filter-by-month";
+  bookList.appendChild(filterByMonth);
+  const monthOptions = document.createElement("option");
+  monthOptions.textContent = "Select month";
+  filterByMonth.appendChild(monthOptions);
+  for (let i = 0; i < months.length; i++) {
+    const monthOption = document.createElement("option");
+    monthOption.value = months[i];
+    monthOption.textContent = months[i];
+    filterByMonth.appendChild(monthOption);
+  }
+
   // author portion to be adjusted later
   //   const addAuthor = (author) => {
   //     const bookAuthor = document.createElement("ul");

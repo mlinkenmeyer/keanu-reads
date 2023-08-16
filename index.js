@@ -39,7 +39,7 @@ const createBook = (book) => {
   const cardImage = document.createElement("img");
   cardImage.className = "card-img-top";
   newCard.appendChild(cardImage);
-  cardImage.src = `http://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`;
+  cardImage.src = `http://covers.openlibrary.org/b/id/${book.cover_i}-L.jpg`;
   cardImage.alt = book.title;
 
   const cardBody = document.createElement("div");

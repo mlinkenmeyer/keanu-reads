@@ -11,22 +11,6 @@
   display: inline-block;
 }
 
-#comment-form {
-  margin: 1rem 0;
-  width: 300px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-#commentDetails {
-  margin: 1rem 0;
-  width: 300px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
 /* For the Book Cards */
 .template {
   display: none;
@@ -102,4 +86,60 @@
   align-items: right;
   padding-top: 20px;
   padding-bottom: 20px;
+}
+
+/* Formatting for the review form */
+#comment-form {
+  border: 2px solid #425e2b;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: #a3dbda;
+  font-family: "Poppins", sans-serif;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #425e2b;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+textarea.form-control {
+  resize: vertical;
+  font-family: "Poppins", sans-serif;
+}
+
+input[type="submit"] {
+  background-color: #425e2b;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  color: #a3dbda;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* formatting book review section */
+#comment-section {
+  border: 2px solid #425e2b;
+  padding: 20px;
+  border-radius: 8px;
+  font-family: "Poppins", sans-serif;
+  background-color: #d9f0f8;
+}
+
+#comment-section div {
+  border: 1px solid #425e2b;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 10px;
 }

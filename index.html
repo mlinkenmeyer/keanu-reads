@@ -50,20 +50,37 @@
 
     <div id="month-dropdown"></div>
 
+   <!--Section for Book Reviews-->
     <div id="comment-section">
       <h3>Book Reviews</h3>
     </div>
+<!--Book Review Form-->
+   <form id="comment-form">
+    <h3>Add Book Review</h3>
+  <div class="form-group">
+    <label for="username">Username:</label>
+    <input type="text" class="form-control" id="username" placeholder="Enter Username...">
+  </div>
+  <div class="form-group">
+    <label for="titleSelect">Select Book:</label>
+    <select class="form-control" id="commentTitle">
+      <option>Inside Out & Back Again</option>
+      <option>Harry Potter and the Deathly Hallows</option>
+      <option>Taking the Red Pill</option>
+      <option>Ode to Happiness</option>
+      <option>BRZRKR, Vol.1</option>
+    </select>
+  </div>
 
-    <form id="comment-form">
-      <h3>Add Book Review</h3>
-      <label for="username">Username:</label>
-      <input type="text" id="username" placeholder="Enter username here..." />
-      <label for="commentTitle">Book Title:</label>
-      <input type="text" id="commentTitle" placeholder="Enter book title..." />
-      <label for="newComment">Comment:</label>
-      <textarea id="newComment" placeholder="Enter your comment..."></textarea>
-      <input type="submit" value="Submit Comment" />
-    </form>
+  <div class="form-group">
+    <label for="newReview">Review:</label>
+    <textarea class="form-control" id="newComment" rows="3" placeholder="Enter Review..." ></textarea>
+  </div>
+
+  <input type="submit" value="Leave Review" />
+</form>
+
+
 
     <!-- bootstrap imports -->
     <script

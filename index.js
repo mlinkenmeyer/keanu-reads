@@ -116,12 +116,16 @@ fetchBooksFromDB();
 //creates highlighted book section
 
 const highlightedBookSection = document.querySelector("#highlighted-book");
+
 const highlightedBookTitle = document.createElement("h3");
 highlightedBookSection.append(highlightedBookTitle);
+
 const highlightedBookAuthor = document.createElement("p");
 highlightedBookSection.append(highlightedBookAuthor);
+
 const highlightedBookDescription = document.createElement("p");
 highlightedBookSection.append(highlightedBookDescription);
+
 const highlightedBookImage = document.createElement("img");
 highlightedBookSection.append(highlightedBookImage);
 

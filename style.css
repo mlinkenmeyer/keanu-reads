@@ -143,3 +143,13 @@ input[type="submit"] {
   border-radius: 4px;
   margin-bottom: 10px;
 }
+
+/* formatting header section */
+.navbar-brand img {
+  height: 100px;
+  width: auto;
+}
+
+.navbar-light bg-light {
+  background-color: white;
+}

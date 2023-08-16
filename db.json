@@ -1,21 +1,21 @@
 {
   "books": [
     {
-      "title": "Inside Out & Back Again",
-      "author": "Thanhha Lai",
+      "title": "What Would Keanu Do?",
+      "author": "Chris Barsanti",
       "image": "",
-      "description": "A moving story of one girl's year of change, dreams, grief, and healing as she journeys from one country to another, one life to the next.",
+      "description": "An examination of everyday challenges faced by readers and helps solve those same problems by applying the philosophical lessons espoused by Reeves (or one of his films).",
       "review": ""
     },
     {
-      "title": "Harry Potter and the Deathly Hallows",
-      "author": "J.K. Rowling",
+      "title": "How to Marry Keanu Reeves in 90 Days",
+      "author": "K.M. Jackson",
       "image": "",
-      "description": "After years of battling against the evil Lord Voldemort, 17-year-old Harry Potter is finally an adult wizard, and he and his best friends Ron Weasley and Hermione Granger must set out on a dangerous mission to stop Voldemort once and for all.",
+      "description": "Bethany Lu Carlisle's life is spiraling out of control. When she discovers her celebrity crush, Keanu Reeves, is planning to get married in 90 days, she decides to track him down to convince him not to get married (or that she is his true love forever).",
       "review": ""
     },
     {
-      "title": "Taking the red pill",
+      "title": "Taking the Red Pill",
       "author": "Glenn Yeffeth",
       "image": "",
       "description": "Taking the Red Pill is a thought-provoking, mind-expanding thrill ride through The Matrix, examining the technological challenges, religious symbolism, and philosophical dilemmas the film presents. Taking the Red Pill will change how you view The Matrix—and the world around you.",
@@ -34,6 +34,12 @@
       "image": "",
       "description": "A WAR WITH NO END. The man known only as B. is half-mortal and half-God, cursed and compelled to violence...even at the sacrifice of his sanity.",
       "review": ""
+    },
+    {
+      "title": "Keanu Reeves",
+      "author": "Brian J. Robb",
+      "image": "",
+      "description": "An exploration on Keanu Reeves' life both on and offscreen. Take a look into the life of one of Hollywood's the most popular and bankable modern stars."
     }
   ]
 }

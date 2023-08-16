@@ -142,7 +142,12 @@ commentForm.addEventListener("submit", (e) => {
     <p> Username: ${formContent.username} </p>
     <p> Title: ${formContent.title} </p>
     <p> Comment: ${formContent.comment} </p>
+    <button class ="delete-button">Delete Review</button>
   `;
+  const deleteButton = commentDetails.querySelector(".delete-button");
+  deleteButton.addEventListener("click", () => {
+    commentDiv.removeChild(commentDetails);
+  });
 
   commentDiv.appendChild(commentDetails);
   commentForm.reset();

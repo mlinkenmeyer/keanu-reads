@@ -1,17 +1,4 @@
 const bookList = document.querySelector(".books-of-the-month");
-const currentBookBanner = document.querySelector(".current-book");
-const currentMonthTitle = document.createElement("h1");
-
-currentMonthTitle.textContent = "August Pick";
-currentBookBanner.appendChild(currentMonthTitle);
-
-const currentMonthBook = document.createElement("p");
-currentMonthBook.textContent = "Current Book Title";
-currentBookBanner.appendChild(currentMonthBook);
-
-const keanuPhoto = document.createElement("img");
-keanuPhoto.src = `https://www.cheatsheet.com/wp-content/uploads/2023/03/Sad-Keanu-Reeves-meme.jpg`;
-currentBookBanner.appendChild(keanuPhoto);
 
 const searchBookByTitle = (title) => {
   return fetch(`https://openlibrary.org/search.json?title=${title}`)

@@ -143,3 +143,15 @@ input[type="submit"] {
   border-radius: 4px;
   margin-bottom: 10px;
 }
+
+/* formatting header section */
+.navbar-brand img {
+  height: 100px;
+  width: auto;
+}
+
+.jumbotron {
+  height: 400px;
+  background: url("https://www.cheatsheet.com/wp-content/uploads/2023/03/Sad-Keanu-Reeves-meme.jpg");
+  background-size: cover;
+}

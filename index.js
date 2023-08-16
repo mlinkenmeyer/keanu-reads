@@ -173,6 +173,13 @@ const createMonthDropdown = () => {
   // Append the created dropdown to the month-dropdown div on the DOM
   const monthDropdownDiv = document.getElementById("month-dropdown");
   monthDropdownDiv.appendChild(filterByMonth);
+
+  // create change event with month dropdown div
+  filterByMonth.addEventListener("change", (e) => {
+    console.log(e);
+    const selectedMonth = e.target.value;
+    console.log(selectedMonth);
+  });
 };
 
 // Create the month dropdown

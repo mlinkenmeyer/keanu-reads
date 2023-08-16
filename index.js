@@ -104,6 +104,9 @@ fetchBooksFromDB();
 
 const highlightedBookSection = document.querySelector("#highlighted-book");
 
+const highlightedBookMonth = document.createElement("h5");
+highlightedBookSection.append(highlightedBookMonth);
+
 const highlightedBookTitle = document.createElement("h3");
 highlightedBookSection.append(highlightedBookTitle);
 
@@ -118,6 +121,7 @@ highlightedBookSection.append(highlightedBookImage);
 
 //function to display the highlighted book; called in the createBook function
 const displayHighLightedBook = (book) => {
+  highlightedBookMonth.textContent = `Keanu\'s ${book.month} Pick`;
   highlightedBookTitle.textContent = book.title;
   highlightedBookAuthor.textContent = book.author;
   highlightedBookDescription.textContent = book.description;
@@ -174,7 +178,6 @@ const createMonthDropdown = () => {
   const monthDropdownDiv = document.getElementById("month-dropdown");
   monthDropdownDiv.appendChild(filterByMonth);
 
-  // create change event with month dropdown div
   filterByMonth.addEventListener("change", (e) => {
     console.log(e);
     const selectedMonth = e.target.value;

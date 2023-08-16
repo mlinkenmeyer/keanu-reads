@@ -1,4 +1,3 @@
-
 const bookList = document.querySelector(".books-of-the-month");
 const currentBookBanner = document.querySelector(".current-book");
 const currentMonthTitle = document.createElement("h1");
@@ -40,7 +39,6 @@ const fetchAuthor = (authorId) => {
 };
 
 const createBook = (book) => {
-
   const templateCard = document.querySelector(".book-card.template");
   const newCard = templateCard.cloneNode(true);
 
@@ -79,6 +77,10 @@ const createBook = (book) => {
     }
   });
   bookList.appendChild(newCard);
+
+  newCard.addEventListener("click", (e) => {
+    displayHighLightedBook(book);
+  });
 };
 
 //begin fetches for db.json
@@ -109,8 +111,31 @@ const fetchBooksFromDB = () => {
 
 fetchBooksFromDB();
 
-
 // Comment form
+
+//creates highlighted book section
+
+const highlightedBookSection = document.querySelector("#highlighted-book");
+
+const highlightedBookTitle = document.createElement("h3");
+highlightedBookSection.append(highlightedBookTitle);
+
+const highlightedBookAuthor = document.createElement("p");
+highlightedBookSection.append(highlightedBookAuthor);
+
+const highlightedBookDescription = document.createElement("p");
+highlightedBookSection.append(highlightedBookDescription);
+
+const highlightedBookImage = document.createElement("img");
+highlightedBookSection.append(highlightedBookImage);
+
+//function to display the highlighted book; called in the createBook function
+const displayHighLightedBook = (book) => {
+  highlightedBookTitle.textContent = book.title;
+  highlightedBookAuthor.textContent = book.author;
+  highlightedBookDescription.textContent = book.description;
+  highlightedBookImage.src = `http://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`;
+};
 
 //creates book review form
 const commentDiv = document.querySelector("#comment-section");
@@ -156,7 +181,7 @@ const createMonthDropdown = () => {
   // Append the created dropdown to the month-dropdown div on the DOM
   const monthDropdownDiv = document.getElementById("month-dropdown");
   monthDropdownDiv.appendChild(filterByMonth);
-}
+};
 
 // Create the month dropdown
 createMonthDropdown();

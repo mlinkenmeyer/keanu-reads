@@ -32,6 +32,7 @@ let booksAdded = 0;
 const carouselInner = document.querySelector(".carousel-inner");
 
 const createBook = (book) => {
+  //moved book cards here instead
   const newCard = document.createElement("div");
   newCard.className = "book-card";
 

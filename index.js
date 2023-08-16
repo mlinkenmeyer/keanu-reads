@@ -106,7 +106,6 @@ const createBook = (book) => {
     displayHighLightedBook(book);
   });
 };
-
 //begin fetches for db.json
 
 const fetchBooksFromDB = () => {

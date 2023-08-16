@@ -25,20 +25,70 @@ const fetchAuthor = (authorId) => {
     });
 };
 
+//pre-sets to false to make sure
+//books that are added get an active class
+let currentCarouselItem = null;
+let booksAdded = 0;
+const carouselInner = document.querySelector(".carousel-inner");
+
 const createBook = (book) => {
-  const templateCard = document.querySelector(".book-card.template");
-  const newCard = templateCard.cloneNode(true);
+  //moved book cards here instead
+  const newCard = document.createElement("div");
+  newCard.className = "book-card";
 
-  newCard.classList.remove("template");
-
-  const cardTitle = newCard.querySelector(".card-title");
-  cardTitle.textContent = book.title;
-
-  const cardImage = newCard.querySelector(".card-img-top");
+  const cardImage = document.createElement("img");
+  cardImage.className = "card-img-top";
+  newCard.appendChild(cardImage);
   cardImage.src = `http://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`;
   cardImage.alt = book.title;
 
-  const cardText = newCard.querySelector(".author-text");
+  const cardBody = document.createElement("div");
+  cardBody.className = "card-body";
+  newCard.appendChild(cardBody);
+
+  const cardTitle = document.createElement("h4");
+  cardTitle.className = "card-title";
+  cardBody.appendChild(cardTitle);
+  cardTitle.textContent = book.title;
+
+  const cardText = document.createElement("h5");
+  cardText.className = "author-text";
+  cardBody.appendChild(cardText);
+
+  const descriptionText = document.createElement("p");
+  descriptionText.className = "description-text";
+  cardBody.appendChild(descriptionText);
+
+  const likeButton = document.createElement("a");
+  likeButton.className = "btn btn-primary";
+  likeButton.id = "like-button";
+  cardBody.appendChild(likeButton);
+
+  likeButton.textContent = "Like book";
+  likeButton.addEventListener("click", () => {
+    if (likeButton.textContent === "Like book") {
+      likeButton.textContent = "Unlike book";
+    } else {
+      likeButton.textContent = "Like book";
+    }
+  });
+
+  //hides the HTML card's template so you don't see the default card
+  newCard.classList.remove("template");
+
+  if (booksAdded % 3 === 0) {
+    currentCarouselItem = document.createElement("div");
+    currentCarouselItem.className =
+      "carousel-item d-flex justify-content-around";
+
+    if (booksAdded === 0) {
+      currentCarouselItem.classList.add("active");
+    }
+    carouselInner.appendChild(currentCarouselItem);
+  }
+
+  currentCarouselItem.appendChild(newCard);
+  booksAdded++;
 
   if (book.author_key && book.author_key.length) {
     fetchAuthor(book.author_key[0]).then((authorData) => {
@@ -50,29 +100,17 @@ const createBook = (book) => {
     cardText.textContent = "Author info not available.";
   }
   // Add book description below the author's name
-  const descriptionText = newCard.querySelector(".description-text");
   descriptionText.textContent =
     book.description || "Description not available.";
-
-  const likeButton = newCard.querySelector("#like-button");
-  likeButton.textContent = "Like book";
-  likeButton.addEventListener("click", () => {
-    if (likeButton.textContent === "Like book") {
-      likeButton.textContent = "Unlike book";
-    } else {
-      likeButton.textContent = "Like book";
-    }
-  });
-  bookList.appendChild(newCard);
 
   newCard.addEventListener("click", (e) => {
     displayHighLightedBook(book);
   });
 };
-
 //begin fetches for db.json
 
 const fetchBooksFromDB = () => {
+  carouselInner.innerHTML = "";
   fetch("http://localhost:3000/books")
     .then((response) => response.json())
     .then(async (booksFromDB) => {
@@ -98,6 +136,7 @@ const fetchBooksFromDB = () => {
 
 fetchBooksFromDB();
 
+$("#bookCarousel").carousel();
 // Comment form
 
 //creates highlighted book section
@@ -174,7 +213,6 @@ const createMonthDropdown = () => {
   const monthDropdownDiv = document.getElementById("month-dropdown");
   monthDropdownDiv.appendChild(filterByMonth);
 
-  // create change event with month dropdown div
   filterByMonth.addEventListener("change", (e) => {
     console.log(e);
     const selectedMonth = e.target.value;

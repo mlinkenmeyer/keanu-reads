@@ -59,19 +59,33 @@ const createBook = (book) => {
   descriptionText.className = "description-text";
   cardBody.appendChild(descriptionText);
 
+  // Note: This is for when, on hover, you can view the full book details
+  // And like a book with two buttons displayed over top.
+  const overlay = document.createElement('div');
+  overlay.className = 'overlay';
+
+  const seeMoreBtn = document.createElement("a");
+  seeMoreBtn.className = "btn btn-secondary";
+  seeMoreBtn.textContent = "See More";
+
   const likeButton = document.createElement("a");
   likeButton.className = "btn btn-primary";
   likeButton.id = "like-button";
   cardBody.appendChild(likeButton);
-
-  likeButton.textContent = "Like book";
+  likeButton.textContent = "♥︎";
   likeButton.addEventListener("click", () => {
-    if (likeButton.textContent === "Like book") {
-      likeButton.textContent = "Unlike book";
+    if (likeButton.textContent === "♥︎") {
+      likeButton.textContent = "♡";
     } else {
-      likeButton.textContent = "Like book";
+      likeButton.textContent = "♥︎";
     }
   });
+
+  //Two Buttons now displaying on overlay instead of in body
+  overlay.appendChild(seeMoreBtn);
+  overlay.appendChild(likeButton);
+
+  newCard.appendChild(overlay);
 
   //hides the HTML card's template so you don't see the default card
   newCard.classList.remove("template");

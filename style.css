@@ -176,7 +176,7 @@ input[type="submit"] {
 /* formatting header section */
 .navbar {
   background-color: #d9f0f8;
-  color: black;
+  color: #035b71;
 }
 .navbar-brand img {
   height: 100px;
@@ -202,4 +202,8 @@ input[type="submit"] {
   text-align: auto;
   width: auto;
   padding: 25px 50px 75px 100px;
+}
+
+body {
+  background-color: #d9f0f8 !important;
 }

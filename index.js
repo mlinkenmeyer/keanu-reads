@@ -171,31 +171,34 @@ const displayHighLightedBook = (book) => {
 const commentDiv = document.querySelector("#comment-section");
 const commentForm = document.querySelector("#comment-form");
 
-commentForm.addEventListener("submit", (e) => {
-  e.preventDefault();
+commentForm.addEventListener("submit", (event) => {
+  event.preventDefault();
 
-  const formContent = {
-    username: document.querySelector("#username").value,
-    title: document.querySelector("#commentTitle").value,
-    comment: document.querySelector("#newComment").value,
-  };
+  const username = document.querySelector("#username").value;
+  const bookTitle = document.querySelector("#commentTitle").value;
+  const review = document.querySelector("#newComment").value;
 
-  const commentDetails = document.createElement("div");
-  commentDetails.innerHTML = `
-    <p> Username: ${formContent.username} </p>
-    <p> Title: ${formContent.title} </p>
-    <p> Comment: ${formContent.comment} </p>
-    <button class ="delete-button">Delete Review</button>
+  const newReview = document.createElement("div");
+  newReview.className = "quote-card";
+  newReview.innerHTML = `
+  <div class="card-header">${bookTitle}</div>
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+    <p>${review}</p>
+    <footer class="blockquote-footer">
+    ${username}
+    <cite title "Source Title">submitted on ${new Date().toLocaleDateString()}</cite>
+    </footer>
+    </blockquote>
+    </div>
   `;
-  const deleteButton = commentDetails.querySelector(".delete-button");
-  deleteButton.addEventListener("click", () => {
-    commentDiv.removeChild(commentDetails);
-  });
 
-  commentDiv.appendChild(commentDetails);
-  commentForm.reset();
+  document.querySelector("#comment-section").appendChild(newReview);
+
+  document.querySelector("#username").value = "";
+  document.querySelector("#commentTitle").selectedIndex = 0;
+  document.querySelector("#newComment").value = "";
 });
-
 //adds focusin event on form
 const usernameInput = document.querySelector("#username");
 usernameInput.addEventListener("focusin", (e) => {

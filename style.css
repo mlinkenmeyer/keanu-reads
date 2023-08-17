@@ -163,7 +163,7 @@ input[type="submit"] {
   padding: 20px;
   border-radius: 8px;
   font-family: "Poppins", sans-serif;
-  background-color: #d9f0f8;
+  background-color: #a3dbda;
 }
 
 #comment-section div {
@@ -171,6 +171,10 @@ input[type="submit"] {
   padding: 10px;
   border-radius: 4px;
   margin-bottom: 10px;
+}
+
+.quote-card {
+  background-color: white;
 }
 
 /* formatting header section */

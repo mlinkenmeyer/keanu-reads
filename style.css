@@ -1,6 +1,35 @@
-.like-button {
-  background-color: #8eaebd;
-  color: #f6f6f6;
+/* ----- Global Font Overrides ----- */
+/* ----- All use Poppins from Style-Ref ----- */
+h1 {
+  font-weight: 600 !important;
+}
+
+h2 {
+  font-weight: 400 !important;
+}
+
+h3 {
+  font-weight: 400 !important;
+}
+
+h4 {
+  font-weight: 400 !important;
+}
+
+h5 {
+  font-weight: 100 !important;
+  font-style: italic;
+}
+
+body {
+  background-color: #d9f0f8 !important;
+}
+
+/* ----- buttons ----- */
+
+.btn-primary {
+  background-color: #035b71 !important;
+  color: #f6f6f6 !important;
   padding: 10px 40px;
   border: none;
   cursor: default;
@@ -32,6 +61,23 @@
   border: 1px solid #e0e0e0;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
+  background-color: white !important;
+}
+
+.month-text {
+  font-weight: 100 !important;
+  font-style: italic;
+  font-size: 18px;
+  text-align: center;
+}
+
+.author-text {
+  font-size: 18px;
+  text-align: center;
+}
+
+.card-title {
+  text-align: center;
 }
 
 .book-card .card-img-top {
@@ -40,44 +86,75 @@
 }
 
 .card-body {
-  max-height: calc(450px - 260px);
+  max-height: calc(450px - 275px);
   overflow-y: auto;
   padding: 15px;
-}
-/* scrolling for extra text for now */
-.card-body::-webkit-scrollbar {
-  width: 10px; /* Width of the scrollbar */
+  background-color: white !important;
 }
 
-.card-body::-webkit-scrollbar-thumb {
-  background-color: #035b71; /* Color of the scroll thumb (the part you drag) */
-  border-radius: 4px;
-}
-
-.card-body::-webkit-scrollbar-track {
-  background-color: #d9f0f8;
-  border-radius: 4px;
-}
-/* end scrolling css code */
 .book-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-10px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
+.book-card:hover .overlay {
+  opacity: 1;
+}
+
 .card-img-top {
-  width: 150px;
-  height: 260px;
+  width: 100px;
+  height: 275px;
   object-fit: inherit;
 }
 
+/* This is for the overlay */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(128, 128, 128, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+  flex-direction: column;
+  border-radius: 10px;
+}
+
+#like-button {
+  position: absolute;
+  bottom: 185px; /* Adjust as needed for distance from the bottom */
+  right: 10px; /* Adjust as needed for distance from the right */
+}
+
+#like-button:hover {
+  background-color: #03acd5 !important;
+  color: white;
+}
+
+.btn-secondary {
+  background-color: #035b71 !important;
+  color: white !important;
+  position: absolute;
+  bottom:10px;
+}
+.btn-secondary:hover {
+  background-color: #03acd5 !important;
+  color: white !important;
+}
 /*begin book carousel*/
 
 #bookCarousel {
-  width: 90%;
+  width: 80%;
   overflow: hidden;
   position: relative !important;
-  margin-left: 5%;
-  margin-right: 5%;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-left: 10%;
+  margin-right: 10%;
   transition: 0.5s ease;
 }
 

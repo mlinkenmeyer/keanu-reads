@@ -119,6 +119,13 @@ const createBook = (book) => {
     displayHighLightedBook(book);
   });
 };
+
+const defaultBook = (book) => {
+  if (!book || book === "undefined") {
+    displayHighLightedBook(books[0]);
+  } else displayHighLightedBook(book);
+};
+
 //begin fetches for db.json
 
 const fetchBooksFromDB = () => {
@@ -137,6 +144,7 @@ const fetchBooksFromDB = () => {
           }
           createBook(book);
         }
+        defaultBook(booksFromDB[0]);
       } else {
         console.log("No books found in db.json");
       }
@@ -150,7 +158,6 @@ const fetchBooksFromDB = () => {
 fetchBooksFromDB();
 $("#bookCarousel").carousel();
 // Comment form
-
 //creates highlighted book section
 
 const highlightedBookSection = document.querySelector("#highlighted-book");

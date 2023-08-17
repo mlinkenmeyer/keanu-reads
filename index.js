@@ -116,7 +116,7 @@ const createBook = (book) => {
     cardText.textContent = "Author info not available.";
   }
 
-  newCard.addEventListener("click", (e) => {
+  seeMoreBtn.addEventListener("click", (e) => {
     displayHighLightedBook(book);
   });
 };

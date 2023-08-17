@@ -121,8 +121,30 @@ body {
   opacity: 0;
   transition: opacity 0.3s;
   flex-direction: column;
+  border-radius: 10px;
 }
 
+#like-button {
+  position: absolute;
+  bottom: 185px; /* Adjust as needed for distance from the bottom */
+  right: 10px; /* Adjust as needed for distance from the right */
+}
+
+#like-button:hover {
+  background-color: #03acd5 !important;
+  color: white;
+}
+
+.btn-secondary {
+  background-color: #035b71 !important;
+  color: white !important;
+  position: absolute;
+  bottom:10px;
+}
+.btn-secondary:hover {
+  background-color: #03acd5 !important;
+  color: white !important;
+}
 /*begin book carousel*/
 
 #bookCarousel {
@@ -155,8 +177,6 @@ body {
 .carousel-item:not(.active) {
   display: none !important;
 }
-
-
 
 /* begin current book styling */
 

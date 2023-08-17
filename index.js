@@ -49,8 +49,7 @@ const createBook = (book) => {
   const monthText = document.createElement("h4");
   monthText.className = "month-text";
   cardBody.appendChild(monthText);
-  monthText.textContent =
-  book.month || "Month not available.";
+  monthText.textContent = book.month || "Month not available.";
 
   const cardTitle = document.createElement("h4");
   cardTitle.className = "card-title";
@@ -63,8 +62,8 @@ const createBook = (book) => {
 
   // Note: This is for when, on hover, you can view the full book details
   // And like a book with two buttons displayed over top.
-  const overlay = document.createElement('div');
-  overlay.className = 'overlay';
+  const overlay = document.createElement("div");
+  overlay.className = "overlay";
 
   const seeMoreBtn = document.createElement("a");
   seeMoreBtn.className = "btn btn-secondary";
@@ -142,13 +141,13 @@ const fetchBooksFromDB = () => {
         console.log("No books found in db.json");
       }
     })
+
     .catch((error) => {
       console.error("Failed to fetch books from db.json:", error);
     });
 };
 
 fetchBooksFromDB();
-
 $("#bookCarousel").carousel();
 // Comment form
 
@@ -207,7 +206,6 @@ commentForm.addEventListener("submit", (event) => {
   `;
 
   document.querySelector("#comment-section").appendChild(newReview);
-
   document.querySelector("#username").value = "";
   document.querySelector("#commentTitle").selectedIndex = 0;
   document.querySelector("#newComment").value = "";
@@ -228,4 +226,3 @@ reviewInput.addEventListener("focusin", (e) => {
 reviewInput.addEventListener("focusout", (e) => {
   e.target.style.background = "";
 });
-

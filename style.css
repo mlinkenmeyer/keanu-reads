@@ -59,7 +59,7 @@ body {
   width: auto;
   box-sizing: border-box;
   border: 1px solid #e0e0e0;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px  #425e2b;
   border-radius: 10px;
   background-color: white !important;
 }
@@ -196,7 +196,7 @@ body {
 
 /* Formatting for the review form */
 #comment-form {
-  border: 2px solid #425e2b;
+  border: 6px solid #425e2b;
   padding: 20px;
   border-radius: 8px;
   max-width: 400px;
@@ -236,7 +236,7 @@ input[type="submit"] {
 
 /* formatting book review section */
 #comment-section {
-  border: 2px solid #425e2b;
+  border: 6px solid #425e2b;
   padding: 20px;
   border-radius: 8px;
   font-family: "Poppins", sans-serif;
@@ -249,7 +249,7 @@ input[type="submit"] {
 #comment-section div {
   border: 1px solid #425e2b;
   padding: 10px;
-  border-radius: 4px;
+  border-radius: 6px;
   margin-bottom: 10px;
 }
 
@@ -287,7 +287,7 @@ body {
 
 /* formatting highlighted book seciton*/
 #highlighted-book {
-  border: 2px solid #425e2b;
+  border: 6px solid #425e2b;
   padding: 20px;
   border-radius: 8px;
   margin: 0 auto;

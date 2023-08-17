@@ -208,3 +208,21 @@ commentForm.addEventListener("submit", (e) => {
   commentDiv.appendChild(commentDetails);
   commentForm.reset();
 });
+
+//adds focusin event on form
+const usernameInput = document.querySelector("#username");
+usernameInput.addEventListener("focusin", (e) => {
+  e.target.style.background = "#d9f0f8";
+});
+usernameInput.addEventListener("focusout", (e) => {
+  e.target.style.background = "";
+});
+
+const reviewInput = document.querySelector("#newComment");
+reviewInput.addEventListener("focusin", (e) => {
+  e.target.style.background = "#d9f0f8";
+});
+reviewInput.addEventListener("focusout", (e) => {
+  e.target.style.background = "";
+});
+

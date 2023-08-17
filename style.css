@@ -139,7 +139,7 @@ body {
   background-color: #035b71 !important;
   color: white !important;
   position: absolute;
-  bottom:10px;
+  bottom: 10px;
 }
 .btn-secondary:hover {
   background-color: #03acd5 !important;
@@ -241,6 +241,9 @@ input[type="submit"] {
   border-radius: 8px;
   font-family: "Poppins", sans-serif;
   background-color: #a3dbda;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
 #comment-section div {
@@ -278,13 +281,20 @@ input[type="submit"] {
   color: black;
 }
 
-/* formatting highlighted book seciton*/
-#highlighted-book {
-  text-align: auto;
-  width: auto;
-  padding: 25px 50px 75px 100px;
-}
-
 body {
   background-color: #d9f0f8 !important;
+}
+
+/* formatting highlighted book seciton*/
+#highlighted-book {
+  border: 2px solid #425e2b;
+  padding: 20px;
+  border-radius: 8px;
+  margin: 0 auto;
+  background-color: #a3dbda;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
 }

@@ -163,7 +163,7 @@ input[type="submit"] {
   padding: 20px;
   border-radius: 8px;
   font-family: "Poppins", sans-serif;
-  background-color: #d9f0f8;
+  background-color: #a3dbda;
 }
 
 #comment-section div {
@@ -173,10 +173,14 @@ input[type="submit"] {
   margin-bottom: 10px;
 }
 
+.quote-card {
+  background-color: white;
+}
+
 /* formatting header section */
 .navbar {
   background-color: #d9f0f8;
-  color: black;
+  color: #035b71;
 }
 .navbar-brand img {
   height: 100px;
@@ -202,4 +206,8 @@ input[type="submit"] {
   text-align: auto;
   width: auto;
   padding: 25px 50px 75px 100px;
+}
+
+body {
+  background-color: #d9f0f8 !important;
 }

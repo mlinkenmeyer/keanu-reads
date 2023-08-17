@@ -46,6 +46,12 @@ const createBook = (book) => {
   cardBody.className = "card-body";
   newCard.appendChild(cardBody);
 
+  const monthText = document.createElement("h4");
+  monthText.className = "month-text";
+  cardBody.appendChild(monthText);
+  monthText.textContent =
+  book.month || "Month not available.";
+
   const cardTitle = document.createElement("h4");
   cardTitle.className = "card-title";
   cardBody.appendChild(cardTitle);
@@ -54,10 +60,6 @@ const createBook = (book) => {
   const cardText = document.createElement("h5");
   cardText.className = "author-text";
   cardBody.appendChild(cardText);
-
-  const descriptionText = document.createElement("p");
-  descriptionText.className = "description-text";
-  cardBody.appendChild(descriptionText);
 
   // Note: This is for when, on hover, you can view the full book details
   // And like a book with two buttons displayed over top.
@@ -113,9 +115,6 @@ const createBook = (book) => {
   } else {
     cardText.textContent = "Author info not available.";
   }
-  // Add book description below the author's name
-  descriptionText.textContent =
-    book.description || "Description not available.";
 
   newCard.addEventListener("click", (e) => {
     displayHighLightedBook(book);
@@ -174,7 +173,7 @@ highlightedBookSection.append(highlightedBookImage);
 
 //function to display the highlighted book; called in the createBook function
 const displayHighLightedBook = (book) => {
-  highlightedBookMonth.textContent = `Keanu\'s ${book.month} Pick`;
+  highlightedBookMonth.textContent = `Keanu\'s ${book.month}`;
   highlightedBookTitle.textContent = book.title;
   highlightedBookAuthor.textContent = book.author;
   highlightedBookDescription.textContent = book.description;
@@ -209,34 +208,3 @@ commentForm.addEventListener("submit", (e) => {
   commentDiv.appendChild(commentDetails);
   commentForm.reset();
 });
-
-//dropdown for months
-const createMonthDropdown = () => {
-  const months = ["August", "September", "October", "November", "December"];
-  const filterByMonth = document.createElement("select");
-  filterByMonth.id = "filter-by-month";
-
-  const monthOptions = document.createElement("option");
-  monthOptions.textContent = "Select month";
-  filterByMonth.appendChild(monthOptions);
-
-  for (let month of months) {
-    const monthOption = document.createElement("option");
-    monthOption.value = month;
-    monthOption.textContent = month;
-    filterByMonth.appendChild(monthOption);
-  }
-
-  // Append the created dropdown to the month-dropdown div on the DOM
-  const monthDropdownDiv = document.getElementById("month-dropdown");
-  monthDropdownDiv.appendChild(filterByMonth);
-
-  filterByMonth.addEventListener("change", (e) => {
-    console.log(e);
-    const selectedMonth = e.target.value;
-    console.log(selectedMonth);
-  });
-};
-
-// Create the month dropdown
-createMonthDropdown();

@@ -201,7 +201,7 @@ commentForm.addEventListener("submit", (event) => {
   newReview.className = "quote-card";
   newReview.innerHTML = `
   <div class="card-header">${bookTitle}</div>
-  <div class="card-body">
+  <div class="card-body review-card-body">
     <blockquote class="blockquote mb-0">
     <p>${review}</p>
     <footer class="blockquote-footer">
@@ -209,8 +209,15 @@ commentForm.addEventListener("submit", (event) => {
     <cite title "Source Title">submitted on ${new Date().toLocaleDateString()}</cite>
     </footer>
     </blockquote>
+    <button class= "delete-button">Delete Review</button>
     </div>
   `;
+
+  newReview.querySelector(".delete-button").addEventListener("click", () => {
+    newReview.remove();
+  });
+
+  commentDiv.append(newReview);
 
   document.querySelector("#comment-section").appendChild(newReview);
   document.querySelector("#username").value = "";

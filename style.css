@@ -59,7 +59,7 @@ body {
   width: auto;
   box-sizing: border-box;
   border: 1px solid #e0e0e0;
-  box-shadow: 0 4px 8px  #425e2b;
+  box-shadow: 0 4px 8px #425e2b;
   border-radius: 10px;
   background-color: white !important;
 }
@@ -231,7 +231,6 @@ input[type="submit"] {
   border: none;
   padding: 10px 20px;
   border-radius: 4px;
-  cursor: pointer;
 }
 
 /* formatting book review section */
@@ -255,6 +254,23 @@ input[type="submit"] {
 
 .quote-card {
   background-color: white;
+}
+
+/* formatting delete-button */
+.review-card-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.delete-button {
+  background-color: #425e2b;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  color: #a3dbda;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 14px;
 }
 
 /* formatting header section */

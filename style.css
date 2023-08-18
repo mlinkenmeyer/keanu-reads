@@ -299,9 +299,10 @@ body {
   margin-right: 10%;
 }
 
-#highlighted-book-text img{
+#highlighted-book-image img{
   border: 1px solid;
   border-radius: 8px;
+  background-color: white;
 }
 
 #highlighted-book-text {

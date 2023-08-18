@@ -171,22 +171,23 @@ $("#bookCarousel").carousel();
 // Comment form
 //creates highlighted book section
 
-const highlightedBookSection = document.querySelector("#highlighted-book-text");
+const highlightedBookText = document.querySelector("#highlighted-book-text");
+const highlightedBookImageDiv = document.querySelector("#highlighted-book-image");
 
 const highlightedBookMonth = document.createElement("h5");
-highlightedBookSection.append(highlightedBookMonth);
+highlightedBookText.append(highlightedBookMonth);
 
 const highlightedBookTitle = document.createElement("h3");
-highlightedBookSection.append(highlightedBookTitle);
+highlightedBookText.append(highlightedBookTitle);
 
 const highlightedBookAuthor = document.createElement("p");
-highlightedBookSection.append(highlightedBookAuthor);
+highlightedBookText.append(highlightedBookAuthor);
 
 const highlightedBookDescription = document.createElement("p");
-highlightedBookSection.append(highlightedBookDescription);
+highlightedBookText.append(highlightedBookDescription);
 
 const highlightedBookImage = document.createElement("img");
-highlightedBookSection.append(highlightedBookImage);
+highlightedBookImageDiv.append(highlightedBookImage);
 
 //function to display the highlighted book; called in the createBook function
 const displayHighLightedBook = (book) => {

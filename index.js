@@ -120,12 +120,6 @@ const createBook = (book) => {
   });
 };
 
-const defaultBook = (book) => {
-  if (!book || book === "undefined") {
-    displayHighLightedBook(books[0]);
-  } else displayHighLightedBook(book);
-};
-
 //begin fetches for db.json
 
 const fetchBooksFromDB = () => {
@@ -134,17 +128,27 @@ const fetchBooksFromDB = () => {
     .then((response) => response.json())
     .then(async (booksFromDB) => {
       if (booksFromDB && booksFromDB.length) {
+        // We need a variable to store the default book which has the cover_i attribute.
+        // We will use defaultUpdatedBookWithImage for storing that book.
+        let defaultUpdatedBookWithImage = null;
         for (let book of booksFromDB) {
           if (!book.image) {
+            // bookFromAPI fetches a one book object that has the cover_i attribute
             let bookFromAPI = await searchBookByTitle(book.title);
             if (bookFromAPI) {
               // Merge the book from the API with the book from DB
+              // This merge will update the book object below but NOT the booksFromDB
               book = { ...bookFromAPI, ...book };
+              // This check ensures that defaultUpdatedBookWithImage is updated with the first book only
+              // If defaultUpdatedBookWithImage is null that means we have not stored any value in it so far
+              if (defaultUpdatedBookWithImage == null) {
+                defaultUpdatedBookWithImage = book;
+              }
             }
           }
           createBook(book);
         }
-        defaultBook(booksFromDB[0]);
+        defaultBook(defaultUpdatedBookWithImage);
       } else {
         console.log("No books found in db.json");
       }
@@ -153,6 +157,13 @@ const fetchBooksFromDB = () => {
     .catch((error) => {
       console.error("Failed to fetch books from db.json:", error);
     });
+};
+const defaultBook = (book) => {
+  if (!book || book === "undefined") {
+    displayHighLightedBook(book[0]);
+  } else {
+    displayHighLightedBook(book);
+  }
 };
 
 fetchBooksFromDB();

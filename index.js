@@ -201,7 +201,7 @@ commentForm.addEventListener("submit", (event) => {
   newReview.className = "quote-card";
   newReview.innerHTML = `
   <div class="card-header">${bookTitle}</div>
-  <div class="card-body">
+  <div class="card-body review-card-body">
     <blockquote class="blockquote mb-0">
     <p>${review}</p>
     <footer class="blockquote-footer">

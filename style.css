@@ -257,7 +257,11 @@ input[type="submit"] {
 }
 
 /* formatting delete-button */
-
+.review-card-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .delete-button {
   background-color: #425e2b;
   cursor: pointer;

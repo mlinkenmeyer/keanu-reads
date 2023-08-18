@@ -209,8 +209,15 @@ commentForm.addEventListener("submit", (event) => {
     <cite title "Source Title">submitted on ${new Date().toLocaleDateString()}</cite>
     </footer>
     </blockquote>
+    <button class= "delete-button">Delete Review</button>
     </div>
   `;
+
+  newReview.querySelector(".delete-button").addEventListener("click", () => {
+    newReview.remove();
+  });
+
+  commentDiv.append(newReview);
 
   document.querySelector("#comment-section").appendChild(newReview);
   document.querySelector("#username").value = "";

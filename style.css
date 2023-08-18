@@ -25,21 +25,6 @@ body {
   background-color: #d9f0f8 !important;
 }
 
-/* ----- buttons ----- */
-
-.btn-primary {
-  background-color: #035b71 !important;
-  color: #f6f6f6 !important;
-  padding: 10px 40px;
-  border: none;
-  cursor: default;
-}
-
-.filter-by-month {
-  position: relative;
-  display: inline-block;
-}
-
 /* For the Book Cards */
 .template {
   display: none;
@@ -62,6 +47,14 @@ body {
   box-shadow: 0 4px 8px #425e2b;
   border-radius: 10px;
   background-color: white !important;
+}
+
+.btn-primary {
+  background-color: #035b71 !important;
+  color: #f6f6f6 !important;
+  padding: 10px 40px;
+  border: none;
+  cursor: default;
 }
 
 .month-text {
@@ -107,7 +100,7 @@ body {
   object-fit: inherit;
 }
 
-/* This is for the overlay */
+/* This is for the card overlay */
 .overlay {
   position: absolute;
   top: 0;
@@ -145,6 +138,7 @@ body {
   background-color: #03acd5 !important;
   color: white !important;
 }
+
 /*begin book carousel*/
 
 #bookCarousel {
@@ -246,6 +240,7 @@ input[type="submit"] {
   justify-content: space-between;
   align-items: center;
 }
+
 .delete-button {
   background-color: #425e2b;
   cursor: pointer;
@@ -279,10 +274,6 @@ input[type="submit"] {
   background-color: #d9f0f8;
   border-style: none;
   color: black;
-}
-
-body {
-  background-color: #d9f0f8 !important;
 }
 
 /* formatting highlighted book section*/

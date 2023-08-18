@@ -171,7 +171,7 @@ $("#bookCarousel").carousel();
 // Comment form
 //creates highlighted book section
 
-const highlightedBookSection = document.querySelector("#highlighted-book");
+const highlightedBookSection = document.querySelector("#highlighted-book-text");
 
 const highlightedBookMonth = document.createElement("h5");
 highlightedBookSection.append(highlightedBookMonth);
@@ -194,7 +194,7 @@ const displayHighLightedBook = (book) => {
   highlightedBookTitle.textContent = book.title;
   highlightedBookAuthor.textContent = book.author;
   highlightedBookDescription.textContent = book.description;
-  highlightedBookImage.src = `http://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`;
+  highlightedBookImage.src = `http://covers.openlibrary.org/b/id/${book.cover_i}-L.jpg`;
 };
 
 //creates book review form

@@ -178,22 +178,6 @@ body {
   display: none !important;
 }
 
-/* begin current book styling */
-
-.current-book {
-  background-color: #425e2b;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.current-book img {
-  height: 300px;
-  width: auto;
-  align-items: right;
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
-
 /* Formatting for the review form */
 #comment-form {
   border: 6px solid #425e2b;
@@ -301,7 +285,7 @@ body {
   background-color: #d9f0f8 !important;
 }
 
-/* formatting highlighted book seciton*/
+/* formatting highlighted book section*/
 #highlighted-book {
   border: 6px solid #425e2b;
   padding: 20px;
@@ -313,4 +297,16 @@ body {
   width: 80%;
   margin-left: 10%;
   margin-right: 10%;
+}
+
+#highlighted-book-text img{
+  border: 1px solid;
+  border-radius: 8px;
+}
+
+#highlighted-book-text {
+  background-color: white;
+  border: #425e2b solid 1px;
+  padding: 10px;
+  border-radius: 8px;
 }

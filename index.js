@@ -73,12 +73,12 @@ const createBook = (book) => {
   likeButton.className = "btn btn-primary";
   likeButton.id = "like-button";
   cardBody.appendChild(likeButton);
-  likeButton.textContent = "♥︎";
+  likeButton.textContent = "♡";
   likeButton.addEventListener("click", () => {
-    if (likeButton.textContent === "♥︎") {
-      likeButton.textContent = "♡";
+    if (likeButton.textContent === "♡") {
+      likeButton.textContent = "♥";
     } else {
-      likeButton.textContent = "♥︎";
+      likeButton.textContent = "♡";
     }
   });
 
@@ -120,12 +120,6 @@ const createBook = (book) => {
   });
 };
 
-const defaultBook = (book) => {
-  if (!book || book === "undefined") {
-    displayHighLightedBook(books[0]);
-  } else displayHighLightedBook(book);
-};
-
 //begin fetches for db.json
 
 const fetchBooksFromDB = () => {
@@ -134,17 +128,27 @@ const fetchBooksFromDB = () => {
     .then((response) => response.json())
     .then(async (booksFromDB) => {
       if (booksFromDB && booksFromDB.length) {
+        // We need a variable to store the default book which has the cover_i attribute.
+        // We will use defaultUpdatedBookWithImage for storing that book.
+        let defaultUpdatedBookWithImage = null;
         for (let book of booksFromDB) {
           if (!book.image) {
+            // bookFromAPI fetches a one book object that has the cover_i attribute
             let bookFromAPI = await searchBookByTitle(book.title);
             if (bookFromAPI) {
               // Merge the book from the API with the book from DB
+              // This merge will update the book object below but NOT the booksFromDB
               book = { ...bookFromAPI, ...book };
+              // This check ensures that defaultUpdatedBookWithImage is updated with the first book only
+              // If defaultUpdatedBookWithImage is null that means we have not stored any value in it so far
+              if (defaultUpdatedBookWithImage == null) {
+                defaultUpdatedBookWithImage = book;
+              }
             }
           }
           createBook(book);
         }
-        defaultBook(booksFromDB[0]);
+        defaultBook(defaultUpdatedBookWithImage);
       } else {
         console.log("No books found in db.json");
       }
@@ -154,28 +158,36 @@ const fetchBooksFromDB = () => {
       console.error("Failed to fetch books from db.json:", error);
     });
 };
+const defaultBook = (book) => {
+  if (!book || book === "undefined") {
+    displayHighLightedBook(book[0]);
+  } else {
+    displayHighLightedBook(book);
+  }
+};
 
 fetchBooksFromDB();
 $("#bookCarousel").carousel();
-// Comment form
+
 //creates highlighted book section
 
-const highlightedBookSection = document.querySelector("#highlighted-book");
+const highlightedBookText = document.querySelector("#highlighted-book-text");
+const highlightedBookImageDiv = document.querySelector("#highlighted-book-image");
 
 const highlightedBookMonth = document.createElement("h5");
-highlightedBookSection.append(highlightedBookMonth);
+highlightedBookText.append(highlightedBookMonth);
 
 const highlightedBookTitle = document.createElement("h3");
-highlightedBookSection.append(highlightedBookTitle);
+highlightedBookText.append(highlightedBookTitle);
 
 const highlightedBookAuthor = document.createElement("p");
-highlightedBookSection.append(highlightedBookAuthor);
+highlightedBookText.append(highlightedBookAuthor);
 
 const highlightedBookDescription = document.createElement("p");
-highlightedBookSection.append(highlightedBookDescription);
+highlightedBookText.append(highlightedBookDescription);
 
 const highlightedBookImage = document.createElement("img");
-highlightedBookSection.append(highlightedBookImage);
+highlightedBookImageDiv.append(highlightedBookImage);
 
 //function to display the highlighted book; called in the createBook function
 const displayHighLightedBook = (book) => {
@@ -183,9 +195,9 @@ const displayHighLightedBook = (book) => {
   highlightedBookTitle.textContent = book.title;
   highlightedBookAuthor.textContent = book.author;
   highlightedBookDescription.textContent = book.description;
-  highlightedBookImage.src = `http://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`;
   //display comments
   displayBookReviews(book.title);
+  highlightedBookImage.src = `http://covers.openlibrary.org/b/id/${book.cover_i}-L.jpg`;
 };
 
 //creates book review form

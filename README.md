@@ -10,6 +10,8 @@ It also uses the [Open Library API](https://openlibrary.org/developers/api) to q
 ### Contributors
 -----
 📖 Rae Stanton - [Rae on GitHub](https://github.com/rae-stanton)
+<br />
 📖 Jenna Millamena - [Jenna on GitHub](https://github.com/jmillamena)
+<br />
 📖 Madi Linkenmeyer - [Madi on GitHub](https://github.com/mlinkenmeyer)
 

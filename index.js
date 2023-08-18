@@ -73,12 +73,12 @@ const createBook = (book) => {
   likeButton.className = "btn btn-primary";
   likeButton.id = "like-button";
   cardBody.appendChild(likeButton);
-  likeButton.textContent = "♥︎";
+  likeButton.textContent = "♡";
   likeButton.addEventListener("click", () => {
-    if (likeButton.textContent === "♥︎") {
-      likeButton.textContent = "♡";
+    if (likeButton.textContent === "♡") {
+      likeButton.textContent = "♥";
     } else {
-      likeButton.textContent = "♥︎";
+      likeButton.textContent = "♡";
     }
   });
 
@@ -168,7 +168,7 @@ const defaultBook = (book) => {
 
 fetchBooksFromDB();
 $("#bookCarousel").carousel();
-// Comment form
+
 //creates highlighted book section
 
 const highlightedBookText = document.querySelector("#highlighted-book-text");

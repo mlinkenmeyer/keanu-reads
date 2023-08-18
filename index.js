@@ -184,11 +184,14 @@ const displayHighLightedBook = (book) => {
   highlightedBookAuthor.textContent = book.author;
   highlightedBookDescription.textContent = book.description;
   highlightedBookImage.src = `http://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`;
+  //display comments
+  displayBookReviews(book.title);
 };
 
 //creates book review form
 const commentDiv = document.querySelector("#comment-section");
 const commentForm = document.querySelector("#comment-form");
+const selectedBookReview = {};
 
 commentForm.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -196,6 +199,11 @@ commentForm.addEventListener("submit", (event) => {
   const username = document.querySelector("#username").value;
   const bookTitle = document.querySelector("#commentTitle").value;
   const review = document.querySelector("#newComment").value;
+
+  // if (!selectedBookReview[bookTitle]) {
+  //   selectedBookReview[bookTitle] = [];
+  // }
+  // selectedBookReview[bookTitle].push({ username, review });
 
   const newReview = document.createElement("div");
   newReview.className = "quote-card";
@@ -224,6 +232,82 @@ commentForm.addEventListener("submit", (event) => {
   document.querySelector("#commentTitle").selectedIndex = 0;
   document.querySelector("#newComment").value = "";
 });
+
+//function to display book review
+const displayBookReviews = (title) => {
+  commentDiv.innerHTML = "";
+
+  if (bookReviewObj[title]) {
+    bookReviewObj[title].forEach((review) => {
+      const newReview = document.createElement("div");
+      newReview.className = "quote-card";
+      newReview.innerHTML = `
+  <div class="card-header">${title}</div>
+  <div class="card-body review-card-body">
+    <blockquote class="blockquote mb-0">
+    <p>${review.review}</p>
+    <footer class="blockquote-footer">
+    ${review.username}
+    <cite title "Source Title">submitted on ${new Date().toLocaleDateString()}</cite>
+    </footer>
+    </blockquote>
+    </div>
+    `;
+      commentDiv.appendChild(newReview);
+    });
+  }
+};
+
+//Obj to hold book reviews
+
+const bookReviewObj = {
+  "What Would Keanu Do?": [
+    {
+      username: "JohnnyUtah",
+      review:
+        "This book highlights many of Keanu Reeves' amazing qualities. It shows how if we were all a little more like Keanu, the world would be a better place.",
+    },
+    {
+      username: "JohnWick2014",
+      review:
+        "Keanu is helping us all become better people through his actions.",
+    },
+  ],
+  "How to Marry Keanu Reeves in 90 Days": [
+    {
+      username: "thelakehouse06",
+      review:
+        "I enjoyed this book because the characters felt like old friends. It was witty and heartfelt.",
+    },
+  ],
+  "Taking the Red Pill": [
+    {
+      username: "Neo",
+      review:
+        "Great book containing game changing insight about how to view The Matrix and the world.",
+    },
+  ],
+  "Ode to Happiness": [
+    {
+      username: "StreetKingsTomLudlow",
+      review: "It's wonderful, beautiful, honest and sad. A brilliant book.",
+    },
+  ],
+  "BRZRKR, Vol.1": [
+    {
+      username: "Dr.WilliamBeckham",
+      review: "It's an easy read. Very amusing.",
+    },
+  ],
+  "Keanu Reeves": [
+    {
+      username: "ShaneFalcoTheReplacements",
+      review:
+        "This books is well researched and written! I have always liked Keanu Reeves and now I like him even more!",
+    },
+  ],
+};
+
 //adds focusin event on form
 const usernameInput = document.querySelector("#username");
 usernameInput.addEventListener("focusin", (e) => {

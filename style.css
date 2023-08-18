@@ -302,3 +302,7 @@ input[type="submit"] {
   padding: 10px;
   border-radius: 8px;
 }
+
+#highlighted-book-text h5 {
+  padding-top: 10px;
+}

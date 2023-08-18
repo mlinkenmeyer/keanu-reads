@@ -172,7 +172,9 @@ $("#bookCarousel").carousel();
 //creates highlighted book section
 
 const highlightedBookText = document.querySelector("#highlighted-book-text");
-const highlightedBookImageDiv = document.querySelector("#highlighted-book-image");
+const highlightedBookImageDiv = document.querySelector(
+  "#highlighted-book-image"
+);
 
 const highlightedBookMonth = document.createElement("h5");
 highlightedBookText.append(highlightedBookMonth);
@@ -212,11 +214,6 @@ commentForm.addEventListener("submit", (event) => {
   const bookTitle = document.querySelector("#commentTitle").value;
   const review = document.querySelector("#newComment").value;
 
-  // if (!selectedBookReview[bookTitle]) {
-  //   selectedBookReview[bookTitle] = [];
-  // }
-  // selectedBookReview[bookTitle].push({ username, review });
-
   const newReview = document.createElement("div");
   newReview.className = "quote-card";
   newReview.innerHTML = `
@@ -248,7 +245,11 @@ commentForm.addEventListener("submit", (event) => {
 //function to display book review
 const displayBookReviews = (title) => {
   commentDiv.innerHTML = "";
-
+  if (bookReviewObj[title]) {
+    const heading = document.createElement("h3");
+    heading.textContent = "Book Reviews";
+    commentDiv.appendChild(heading);
+  }
   if (bookReviewObj[title]) {
     bookReviewObj[title].forEach((review) => {
       const newReview = document.createElement("div");
